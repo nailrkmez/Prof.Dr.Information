@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Dr. Information — 2027 Multimodal Klinik Zekâ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sol Kenar Çubuğu (Klinik Kontroller, Hafıza ve Belge Yükleme) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🩺</div>
+                <div class="brand-text">
+                    <h2>Prof. Dr. Information</h2>
+                    <span>2027 Multimodal Clinical AI</span>
+                </div>
+            </div>
+
+            <div class="status-badge online">
+                <span class="pulse-dot"></span>
+                <span id="statusText">Model: Aktif & Düşünce Motoru devrede</span>
+            </div>
+
+            <!-- Sürekli Öğrenme & Bilgi Kasası -->
+            <div class="learning-panel">
+                <div class="nav-title">🧠 Sürekli Öğrenme & Hafıza</div>
+                <div class="memory-stats">
+                    <span id="memCount">Hafıza: Aktif</span>
+                    <button id="clearMemBtn" title="Geçmiş Sohbeti Sıfırla">🗑️ Temizle</button>
+                </div>
+                <button class="action-btn" id="uploadDocBtn">
+                    📁 Yeni Rapor / Bilgi Ekle
+                </button>
+                <input type="file" id="fileDocInput" accept=".txt,.json,.md,.pdf" style="display: none;">
+            </div>
+
+            <!-- Hızlı Klinik Karar Protokolleri -->
+            <nav class="clinic-nav">
+                <div class="nav-title">Klinik Karar Ağaçları</div>
+                <button class="nav-btn active" data-prompt="Akut göğüs ağrısı, kardiyak biyobelirteçler (Troponin I/T) ve elektrokardiyogramda ST elevasyonu ayırıcı tanısı">
+                    🫀 Kardiyovasküler & Acil
+                </button>
+                <button class="nav-btn" data-prompt="Akut nörolojik defisit, FAST protokolü ve difüzyon MRG analizi; trombolitik / trombektomi zaman penceresi">
+                    🧠 Nöroloji & İnme
+                </button>
+                <button class="nav-btn" data-prompt="Arteryel kan gazı (AKG) yorumlaması: Anyon açıklı metabolik asidoz ve solunumsal kompanzasyon hesaplaması">
+                    🫁 Kan Gazı & Asit-Baz
+                </button>
+                <button class="nav-btn" data-prompt="Cockcroft-Gault formülü ile kreatinin klerensi (CrCl) ve KDIGO 2026 renal doz titrasyonu">
+                    🔬 Nefroloji & Renal Doz
+                </button>
+                <button class="nav-btn" data-prompt="Sepsis erken tanı kriterleri, qSOFA/SOFA skorlaması ve 1 saatlik ampirik geniş spektrumlu antibiyoterapi">
+                    🦠 Yoğun Bakım & Sepsis
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="security-tag">🔒 Sıfır Veri Sızıntısı & Yerel Donanım</div>
+            </div>
+        </aside>
+
+        <!-- Ana Klinik Konsültasyon Alanı -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="header-info">
+                    <h1>Otonom Çok Boyutlu Klinik Konsültasyon & Karar Destek Sistemi</h1>
+                    <p>Düşünme zinciri (`&lt;think&gt;`), sürekli öğrenme hafızası ve görsel/belge anlama yeteneği.</p>
+                </div>
+            </header>
+
+            <div class="messages-container" id="messagesContainer">
+                <div class="message assistant">
+                    <div class="avatar">👨‍⚕️</div>
+                    <div class="bubble">
+                        <div class="sender-name">Prof. Dr. Information (Kıdemli Klinik Fellow)</div>
+                        <div class="content">
+                            Merhaba. Ben <strong>Prof. Dr. Information</strong>; 2027 yılı uluslararası tıp ve sağlık bilişimi standartlarında çalışan Kıdemli Klinik Yardımcı Hekiminizim.
+                            <br><br>
+                            ⚡ <strong>Öne Çıkan Özellikler:</strong>
+                            <br>• <strong>Kalıcı Sohbet Hafızası:</strong> Önceki hasta verilerini ve konuşmalarımızı asla unutmam.
+                            <br>• <strong>Görsel & Belge Okuma:</strong> Laboratuvar tahlili, EKG veya klinik fotoğraf yükleyebilirsiniz.
+                            <br>• <strong>Sürekli Gelişim:</strong> Yeni klinik rapor ve dokümanları sol panelden aktararak bilgi dağarcığımı genişletebilirsiniz.
+                            <br>• <strong>Sıfır Halüsinasyon:</strong> Kuru ve alakasız yanıtlar yerine, arkasında durulan derin patofizyolojik mantık yürütürüm.
+                            <br><br>
+                            Hasta vakanızı, laboratuvar değerlerini veya klinik sorunuzu iletebilirsiniz.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Görsel Önizleme Şeridi -->
+            <div id="imagePreviewContainer" class="image-preview-container" style="display: none;">
+                <div class="preview-card">
+                    <img id="imagePreview" src="" alt="Yüklenen Görsel">
+                    <span id="removeImgBtn" title="Görseli Kaldır">✕</span>
+                </div>
+                <span class="preview-label">Klinik görsel/belge eklendi. Soru ile birlikte analiz edilecek.</span>
+            </div>
+
+            <!-- Giriş Alanı -->
+            <footer class="input-area">
+                <form id="chatForm">
+                    <button type="button" id="attachBtn" title="Fotoğraf veya Belge Yükle" class="icon-btn">
+                        📷
+                    </button>
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                    
+                    <textarea id="userInput" placeholder="Klinik vaka, semptomlar, vital parametreler veya hasta geçmişini yazınız..." rows="2" required></textarea>
+                    
+                    <button type="submit" id="sendBtn">
+                        <span>Gönder</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    </button>
+                </form>
+            </footer>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
