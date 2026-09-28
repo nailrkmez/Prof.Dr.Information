@@ -10,6 +10,11 @@
 
 ---
 
+https://huggingface.co/nail3/Prof-Dr-Information-2027/tree/main
+
+
+
+
 ## 🌍 Language / Dil Seçimi
 - [English Documentation & Specifications](#-english-documentation--technical-specifications)
 - [Türkçe Dokümantasyon & Teknik Özellikler](#-t%C3%BCrk%C3%A7e-dok%C3%BCmantasyon--teknik-detaylar)
